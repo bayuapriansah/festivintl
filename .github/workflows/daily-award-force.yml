@@ -2,8 +2,8 @@ name: Daily Award-Force Export
 
 on:
   schedule:
-    # - cron: '0 9 * * *'     # 09:00 UTC ➜ 16:00 WIB
-    - cron: '20 2 * * *'     # 02:20 UTC  ➜  09:20 WIB
+    - cron: '0 9 * * *'     # 09:00 UTC ➜ 16:00 WIB
+    # - cron: '20 2 * * *'     # 02:20 UTC  ➜  09:20 WIB
   workflow_dispatch:        # manual button
 
 jobs:
