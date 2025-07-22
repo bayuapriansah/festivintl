@@ -1,0 +1,5 @@
+# Don’t ever commit the real .env file
+.env
+__pycache__/
+*.xlsx
+logs.txt
