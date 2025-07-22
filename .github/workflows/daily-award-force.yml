@@ -1,0 +1,30 @@
+name: Daily Award-Force Export
+
+on:
+  schedule:
+    - cron: '0 9 * * *'     # 09:00 UTC = 16:00 WIB
+  workflow_dispatch:        # manual button
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    env:                     # read from GitHub Secrets
+      CF_API_KEY:        ${{ secrets.CF_API_KEY }}
+      TELEGRAM_CHAT_ID:  ${{ secrets.TELEGRAM_CHAT_ID }}
+      BOT_TOKEN:         ${{ secrets.BOT_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run export
+        run: python award_force_daily_export.py
